@@ -17,7 +17,7 @@ static int	push(t_stack **dst, t_stack **src)
 	t_stack	*h;
 	t_stack	*tmp;
 
-	if (!*src)
+	if (!(*src) || !src)
 		return (0);
 	if (*dst)
 	{
@@ -25,16 +25,18 @@ static int	push(t_stack **dst, t_stack **src)
 		h = *src;
 		h->next = *dst;
 		(*dst)->prev = h;
-		tmp->prev = NULL;
+		if (tmp)
+			tmp->prev = NULL;
 		*dst = h;
 		*src = tmp;
 	}
 	else
 	{
 		tmp = (*src)->next;
-		dst = src;
+		*dst = *src;
 		tmp->prev = NULL;
 		*src = tmp;
+		(*dst)->next = NULL;
 	}
 	return (1);
 }

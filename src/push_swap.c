@@ -58,6 +58,6 @@ int	main(int ac, char **av)
 		sa(&a);
 	else
 		sorting(&a, &b, size);
-	// print(a);
+	print(a);
 	return (0);
 }

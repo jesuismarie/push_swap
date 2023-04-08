@@ -54,13 +54,14 @@ void	find_sortest_way(t_stack **a, t_stack **b, int index, int size)
 	}
 	else
 	{
-		while (i <= index)
+		while (i < index)
 		{
 			ra(a);
 			i++;
 		}
 	}
-	pb(a, b);
+	if (!is_sorted(*a))
+		pb(a, b);
 }
 
 void	sort_under_12(t_stack **a, t_stack **b, int size)
