@@ -96,4 +96,5 @@ void	indexing(t_stack **a)
 	}
 	quick_sort(arr, 0, n - 1);
 	find_index(a, arr, n);
+	free(arr);
 }

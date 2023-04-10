@@ -21,6 +21,9 @@ static int	swap(t_stack **elem)
 		tmp = (*elem)->data;
 		(*elem)->data = (*elem)->next->data;
 		(*elem)->next->data = tmp;
+		tmp = (*elem)->index;
+		(*elem)->index = (*elem)->next->index;
+		(*elem)->next->index = tmp;
 		return (1);
 	}
 	return (0);
