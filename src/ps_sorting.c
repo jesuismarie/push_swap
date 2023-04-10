@@ -71,20 +71,22 @@ void	sort_under_12(t_stack **a, t_stack **b, int size)
 	int		j;
 	int		n;
 
-	i = 0;
+	i = -1;
 	j = size - 3;
-	while (i < j)
+	while (++i < j)
 	{
 		n = 0;
 		tmp = *a;
 		while (tmp)
 		{
 			if (tmp->index == i)
+			{
 				find_sortest_way(a, b, n, size);
+				size--;
+			}
 			n++;
 			tmp = tmp->next;
 		}
-		i++;
 	}
 	sort_3(a);
 	while (*b)

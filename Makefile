@@ -12,7 +12,7 @@ FLAGS = -Wall -Wextra -Werror -g
 
 LIBFT = -LLibft -lft
 
-CC = cc
+CC = gcc
 
 all: lib $(NAME)
 

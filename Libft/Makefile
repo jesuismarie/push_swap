@@ -7,7 +7,7 @@ OBJS			= $(SRCS:.c=.o)
 HEADER			= libft.h
 RM				= rm -f
 AR				= ar rcs
-CC				= cc
+CC				= gcc
 FLAGS 			= -Wall -Wextra -Werror
 
 %.o: %.c 	$(HEADER) Makefile

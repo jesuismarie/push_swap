@@ -56,7 +56,7 @@ void	quick_sort(int *arr, int low, int high)
 	}
 }
 
-static void	find_index(t_stack **a, int *arr)
+static void	find_index(t_stack **a, int *arr, int n)
 {
 	t_stack	*tmp;
 	int		i;
@@ -65,7 +65,7 @@ static void	find_index(t_stack **a, int *arr)
 	while (tmp)
 	{
 		i = 0;
-		while (arr[i])
+		while (i < n)
 		{
 			if (arr[i] == tmp->data)
 				tmp->index = i;
@@ -86,6 +86,8 @@ void	indexing(t_stack **a)
 	tmp = *a;
 	n = ft_stacksize(*a);
 	arr = (int *)malloc(sizeof(int) * n);
+	if (!arr)
+		return ;
 	while (i < n)
 	{
 		arr[i] = tmp->data;
@@ -93,5 +95,5 @@ void	indexing(t_stack **a)
 		i++;
 	}
 	quick_sort(arr, 0, n - 1);
-	find_index(a, arr);
+	find_index(a, arr, n);
 }
