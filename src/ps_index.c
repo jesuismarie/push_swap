@@ -6,7 +6,7 @@
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 19:01:05 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/08 14:12:24 by mnazarya         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:16:15 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static int	partition_sorting(int *arr, int low, int high)
 	pivot = arr[low];
 	while (1)
 	{
-		while (pivot > arr[i])
+		while (i < high && pivot > arr[i])
 			i++;
-		while (pivot < arr[j])
+		while (j >= 0 && pivot < arr[j])
 			j--;
 		if (i >= j)
 			break ;

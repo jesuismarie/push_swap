@@ -6,7 +6,7 @@
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:45:24 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/05 14:25:13 by mnazarya         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:17:16 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ int	int_range(char	*s)
 	long	nb;
 
 	nb = ft_atol(s);
-	printf("nb: %li\n", nb);
 	if (nb < INT_MIN || nb > INT_MAX)
 		return (0);
 	return (1);

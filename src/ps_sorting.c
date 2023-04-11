@@ -6,7 +6,7 @@
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 19:22:37 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/08 14:53:58 by mnazarya         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:31:25 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,4 @@ void	sort_under_12(t_stack **a, t_stack **b, int size)
 	sort_3(a);
 	while (*b)
 		pa(a, b);
-}
-
-void	sorting(t_stack **a, t_stack **b, int size)
-{
-	if (size == 3)
-		sort_3(a);
-	else if (size > 3 && size < 13)
-		sort_under_12(a, b, size);
 }

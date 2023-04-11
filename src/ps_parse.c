@@ -112,11 +112,11 @@ t_stack	*get_args(t_stack *a, int ac, char **av)
 			ft_stackadd_back(&a, current);
 			j++;
 		}
+		j = 0;
+		while (s[j])
+			free(s[j++]);
+		free(s);
 		i++;
 	}
-	i = 0;
-	while (s[i])
-		free(s[i++]);
-	free(s);
 	return (a);
 }

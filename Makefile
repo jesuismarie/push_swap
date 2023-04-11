@@ -8,7 +8,7 @@ INCS = -I
 
 HEADER = ./includes/push_swap.h
 
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 LIBFT = -LLibft -lft
 

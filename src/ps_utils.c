@@ -62,3 +62,15 @@ int	ft_stacksize(t_stack *stack)
 	}
 	return (i);
 }
+
+void	stackclear(t_stack *a)
+{
+	t_stack *tmp;
+	
+	while (a)
+	{
+		tmp = a->next;
+		free(a);
+		a = tmp;
+	}
+}

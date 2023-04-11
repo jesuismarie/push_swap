@@ -6,7 +6,7 @@
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:58:16 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/08 14:28:36 by mnazarya         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:47:44 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,13 @@ int	main(int ac, char **av)
 		return (0);
 	check(&a, ac, av);
 	indexing(&a);
-	printf ("aaaaa\n");
 	size = ft_stacksize(a);
 	if (size == 2)
 		sa(&a);
-	else
-		sorting(&a, &b, size);
+	else if (size > 3 && size < 13)
+		sort_under_12(&a, &b, size);
 	print(a);
+	stackclear(a);
 	return (0);
 }
+
