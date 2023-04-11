@@ -6,10 +6,81 @@
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 18:03:21 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/01 18:52:28 by mnazarya         ###   ########.fr       */
+/*   Updated: 2023/04/12 00:16:04 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+static int	optimaizer(int size)
+{
+	int	sqrt;
+	int	log;
 
+	sqrt = 1;
+	log = 0;
+	while (sqrt < size / sqrt)
+		sqrt++;
+	while (log)
+	{
+		n /= 2;
+		log++;
+	}
+	return (sqrt + log - 1);
+}
+
+void	butterfly_short_way(t_stack **a, t_stack **b, int index)
+{
+	
+}
+
+void	find_max(t_stack **stack)
+{
+	t_stack	*tmp;
+	int	max;
+	int	i;
+
+	i = 0;
+	tmp = *stack;
+	max = tmp->data;
+	while (stack)
+	{
+		if (stack->data > max)
+			max = stack->data;
+		stack = stack->next;
+	}
+	*stack = tmp;
+	while (tmp->data != max)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	butterfly_short_way(stack, tmp, i);
+}
+
+void	butterfly_sort(t_stack **a, t_stack **b)
+{
+	int	n;
+	int	i;
+	int	op;
+	
+	i = 0;
+	n = ft_stacksize(*a);
+	op = optimaizer(size);
+	while (i < n)
+	{
+		if ((*a)->index <= i)
+		{
+			pb(a, b);
+			rb(b);
+			i++;
+		}
+		else if ((*a)->index > i && (*a)->index <= i + op)
+		{
+			pb(a, b);
+			i++;
+		}
+		else
+			ra(a);
+	}
+}

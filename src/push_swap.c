@@ -6,7 +6,7 @@
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:58:16 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/11 14:47:44 by mnazarya         ###   ########.fr       */
+/*   Updated: 2023/04/11 23:16:47 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	main(int ac, char **av)
 		sa(&a);
 	else if (size > 3 && size < 13)
 		sort_under_12(&a, &b, size);
+	else
+		butterfly_sort(&a, &b);
 	print(a);
 	stackclear(a);
 	return (0);

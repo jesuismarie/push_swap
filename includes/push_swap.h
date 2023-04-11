@@ -57,5 +57,6 @@ void	quick_sort(int *arr, int low, int high);
 void	indexing(t_stack **a);
 void	sort_3(t_stack **stack);
 void	sort_under_12(t_stack **a, t_stack **b, int size);
+void	butterfly_sort(t_stack **a, t_stack **b);
 
 #endif
