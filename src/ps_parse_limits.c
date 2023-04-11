@@ -73,6 +73,7 @@ int	int_range(char	*s)
 	long	nb;
 
 	nb = ft_atol(s);
+	printf("nb: %li\n", nb);
 	if (nb < INT_MIN || nb > INT_MAX)
 		return (0);
 	return (1);

@@ -52,6 +52,7 @@ int	main(int ac, char **av)
 		return (0);
 	check(&a, ac, av);
 	indexing(&a);
+	printf ("aaaaa\n");
 	size = ft_stacksize(a);
 	if (size == 2)
 		sa(&a);
