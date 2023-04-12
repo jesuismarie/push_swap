@@ -6,7 +6,7 @@
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 19:22:37 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/11 14:31:25 by mnazarya         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:45:49 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,27 @@ void	sort_3(t_stack **stack)
 	}
 }
 
-void	find_sortest_way(t_stack **a, t_stack **b, int index, int size)
+static void	find_sortest_way(t_stack **a, t_stack *node)
 {
-	int	i;
+	t_stack	*tmp;
+	int		size;
+	int		i;
 
 	i = 0;
-	if (size - index - 1 < index)
+	tmp = *a;
+	size = ft_stacksize(*a);
+	while ((*a)->data != node->data)
 	{
-		while (i <= size - index - 1)
-		{
+		*a = (*a)->next;
+		i++;
+	}
+	*a = tmp;
+	if (i > size / 2)
+		while ((*a)->data != node->data)
 			rra(a);
-			i++;
-		}
-	}
 	else
-	{
-		while (i < index)
-		{
+		while ((*a)->data != node->data)
 			ra(a);
-			i++;
-		}
-	}
-	if (!is_sorted(*a))
-		pb(a, b);
 }
 
 void	sort_under_12(t_stack **a, t_stack **b, int size)
@@ -69,24 +67,18 @@ void	sort_under_12(t_stack **a, t_stack **b, int size)
 	t_stack	*tmp;
 	int		i;
 	int		j;
-	int		n;
 
 	i = -1;
 	j = size - 3;
 	while (++i < j)
 	{
-		n = 0;
 		tmp = *a;
-		while (tmp)
-		{
-			if (tmp->index == i)
-			{
-				find_sortest_way(a, b, n, size);
-				size--;
-			}
-			n++;
+		while (tmp->index != i)
 			tmp = tmp->next;
-		}
+		find_sortest_way(a, tmp);
+		size--;
+		if (!is_sorted(*a))
+			pb(a, b);
 	}
 	sort_3(a);
 	while (*b)

@@ -6,7 +6,7 @@
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 18:03:21 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/12 00:16:04 by mnazarya         ###   ########.fr       */
+/*   Updated: 2023/04/12 11:22:02 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,36 @@ static int	optimaizer(int size)
 		sqrt++;
 	while (log)
 	{
-		n /= 2;
+		size /= 2;
 		log++;
 	}
 	return (sqrt + log - 1);
 }
 
-void	butterfly_short_way(t_stack **a, t_stack **b, int index)
+static void	butterfly_short_way(t_stack **a, t_stack *node)
 {
-	
+	t_stack	*tmp;
+	int		size;
+	int		i;
+
+	i = 0;
+	tmp = *a;
+	size = ft_stacksize(*a);
+	while ((*a)->data != node->data)
+	{
+		*a = (*a)->next;
+		i++;
+	}
+	*a = tmp;
+	if (i > size / 2)
+		while ((*a)->data != node->data)
+			rra(a);
+	else
+		while ((*a)->data != node->data)
+			ra(a);
 }
 
-void	find_max(t_stack **stack)
+static void	find_max(t_stack **stack)
 {
 	t_stack	*tmp;
 	int	max;
@@ -45,9 +63,9 @@ void	find_max(t_stack **stack)
 	max = tmp->data;
 	while (stack)
 	{
-		if (stack->data > max)
-			max = stack->data;
-		stack = stack->next;
+		if ((*stack)->data > max)
+			max = (*stack)->data;
+		*stack = (*stack)->next;
 	}
 	*stack = tmp;
 	while (tmp->data != max)
@@ -55,7 +73,7 @@ void	find_max(t_stack **stack)
 		tmp = tmp->next;
 		i++;
 	}
-	butterfly_short_way(stack, tmp, i);
+	butterfly_short_way(stack, tmp);
 }
 
 void	butterfly_sort(t_stack **a, t_stack **b)
@@ -66,7 +84,7 @@ void	butterfly_sort(t_stack **a, t_stack **b)
 	
 	i = 0;
 	n = ft_stacksize(*a);
-	op = optimaizer(size);
+	op = optimaizer(n);
 	while (i < n)
 	{
 		if ((*a)->index <= i)
@@ -82,5 +100,10 @@ void	butterfly_sort(t_stack **a, t_stack **b)
 		}
 		else
 			ra(a);
+	}
+	while (*b)
+	{
+		find_max(b);
+		
 	}
 }
