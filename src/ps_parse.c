@@ -14,7 +14,7 @@
 
 void	error_mss(void)
 {
-	ft_putstr_fd("Error\n", 1);
+	ft_putstr_fd("Error\n", 2);
 	exit(0);
 }
 
