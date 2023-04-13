@@ -12,30 +12,6 @@
 
 #include <push_swap.h>
 
-void	sign_between_nbr(int ac, char **av)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (i < ac)
-	{
-		j = 0;
-		while (av[i][j])
-		{
-			while (av[i][j] == ' ' || av[i][j] == '+' || av[i][j] == '-')
-				j++;
-			while (av[i][j] >= 48 && av[i][j] <= 57)
-			{
-				if (av[i][j + 1] == '+' || av[i][j + 1] == '-')
-					error_mss();
-				j++;
-			}
-		}
-		i++;
-	}
-}
-
 void	error_mss(void)
 {
 	ft_putstr_fd("Error\n", 1);
@@ -64,6 +40,30 @@ int	is_no_arg(int ac, char **av)
 		i++;
 	}
 	return (1);
+}
+
+void	sign_between_nbr(int ac, char **av)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i < ac)
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			while (av[i][j] == ' ' || av[i][j] == '+' || av[i][j] == '-')
+				j++;
+			while (av[i][j] >= 48 && av[i][j] <= 57)
+			{
+				if (av[i][j + 1] == '+' || av[i][j + 1] == '-')
+					error_mss();
+				j++;
+			}
+		}
+		i++;
+	}
 }
 
 long	ft_atol(const char *s)

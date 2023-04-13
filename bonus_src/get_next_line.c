@@ -6,11 +6,11 @@
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:51:27 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/03/28 10:05:59 by mnazarya         ###   ########.fr       */
+/*   Updated: 2023/04/13 18:38:37 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "../includes_bonus/checker.h"
 
 char	*ft_find(char *s)
 {

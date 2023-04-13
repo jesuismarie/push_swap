@@ -6,7 +6,7 @@
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 19:22:37 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/12 17:45:49 by mnazarya         ###   ########.fr       */
+/*   Updated: 2023/04/12 19:38:21 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,17 @@ void	sort_under_12(t_stack **a, t_stack **b, int size)
 {
 	t_stack	*tmp;
 	int		i;
-	int		j;
 
-	i = -1;
-	j = size - 3;
-	while (++i < j)
+	i = 0;
+	while (size > 3)
 	{
 		tmp = *a;
 		while (tmp->index != i)
 			tmp = tmp->next;
 		find_sortest_way(a, tmp);
 		size--;
-		if (!is_sorted(*a))
-			pb(a, b);
+		i++;
+		pb(a, b);
 	}
 	sort_3(a);
 	while (*b)

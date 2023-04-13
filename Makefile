@@ -1,32 +1,57 @@
 NAME = push_swap
 
-SRCS = $(wildcard src/*.c)
+BONUS = checker
 
-OBJS = $(SRCS:.c=.o)
+BUILD = ./build
 
-INCS = -I
+SRC	=	./src
+
+SRC_B	=	./bonus_src
+
+SRCS = $(shell find $(SRC) -name '*.c')
+
+SRCS_BONUS = $(shell find $(SRC_B) -name '*.c')
+
+OBJS = $(patsubst $(SRC)/%.c, $(BUILD)/%.o, $(SRCS))
+
+OBJS_BONUS = $(patsubst $(SRC_B)/%.c, $(BUILD)/%.o, $(SRCS_BONUS))
+
+INCS = -I./includes -I./Libft
+
+INCS_B = -I./includes_bonus -I./Libft
 
 HEADER = ./includes/push_swap.h
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+HEADER_BONUS = ./includes_bonus/checker.h
+
+FLAGS = -Wall -Wextra -Werror
 
 LIBFT = -LLibft -lft
 
 CC = cc
 
-all: lib $(NAME)
+all: $(BUILD) lib $(NAME)
 
-%.o: %.c $(HEADER) Makefile
-	$(CC) $(FLAGS) $(INCS)includes -c $< -o $@
+$(BUILD)/%.o: $(SRC)/%.c $(HEADER) Makefile
+	$(CC) $(FLAGS) $(INCS) -c $< -o $@
+
+$(BUILD)/%.o: $(SRC_B)/%.c $(HEADER_BONUS) Makefile
+	$(CC) $(FLAGS) $(INCS_B) -c $< -o $@
 
 ${NAME}: ${OBJS}
-	$(CC) $(FLAGS) $(OBJS) $(INCS)includes -o ${NAME} $(LIBFT)
+	$(CC) $(FLAGS) $(OBJS) $(INCS) -o ${NAME} $(LIBFT)
+
+${BONUS}: ${OBJS_BONUS}
+	$(CC) $(FLAGS) $(OBJS_BONUS) $(INCS_B) -o ${BONUS} $(LIBFT)
+
+$(BUILD):
+		@mkdir -p $(BUILD)
 
 lib:
 	@make -C Libft
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(BUILD)
 	@make clean -C Libft
 
 fclean: clean
@@ -35,4 +60,6 @@ fclean: clean
 
 re: 	fclean all
 
-.PHONY: all clean fclean re
+bonus: $(BONUS)
+
+.PHONY: all clean fclean re bonus

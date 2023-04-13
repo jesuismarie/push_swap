@@ -6,7 +6,7 @@
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 18:03:21 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/12 11:22:02 by mnazarya         ###   ########.fr       */
+/*   Updated: 2023/04/12 19:47:45 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,42 +26,42 @@ static int	optimaizer(int size)
 		size /= 2;
 		log++;
 	}
-	return (sqrt + log - 1);
+	return (sqrt + log);
 }
 
-static void	butterfly_short_way(t_stack **a, t_stack *node)
+static void	butterfly_short_way(t_stack **stack, t_stack *node)
 {
 	t_stack	*tmp;
 	int		size;
 	int		i;
 
 	i = 0;
-	tmp = *a;
-	size = ft_stacksize(*a);
-	while ((*a)->data != node->data)
+	tmp = *stack;
+	size = ft_stacksize(*stack);
+	while ((*stack)->data != node->data)
 	{
-		*a = (*a)->next;
+		*stack = (*stack)->next;
 		i++;
 	}
-	*a = tmp;
+	*stack = tmp;
 	if (i > size / 2)
-		while ((*a)->data != node->data)
-			rra(a);
+		while ((*stack)->data != node->data)
+			rrb(stack);
 	else
-		while ((*a)->data != node->data)
-			ra(a);
+		while ((*stack)->data != node->data)
+			rb(stack);
 }
 
 static void	find_max(t_stack **stack)
 {
 	t_stack	*tmp;
-	int	max;
-	int	i;
+	int		max;
+	int		i;
 
 	i = 0;
 	tmp = *stack;
 	max = tmp->data;
-	while (stack)
+	while (*stack)
 	{
 		if ((*stack)->data > max)
 			max = (*stack)->data;
@@ -81,7 +81,7 @@ void	butterfly_sort(t_stack **a, t_stack **b)
 	int	n;
 	int	i;
 	int	op;
-	
+
 	i = 0;
 	n = ft_stacksize(*a);
 	op = optimaizer(n);
@@ -104,6 +104,6 @@ void	butterfly_sort(t_stack **a, t_stack **b)
 	while (*b)
 	{
 		find_max(b);
-		
+		pa(a, b);
 	}
 }

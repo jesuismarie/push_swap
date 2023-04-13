@@ -1,6 +1,6 @@
 NAME			= libft.a
 
-SRCS			= $(wildcard *.c)#$(shell find . -name '*.c')
+SRCS			= $(shell find . -name '*.c')
 
 OBJS			= $(SRCS:.c=.o)
 
