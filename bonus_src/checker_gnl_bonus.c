@@ -6,11 +6,34 @@
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:51:27 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/13 18:38:37 by mnazarya         ###   ########.fr       */
+/*   Updated: 2023/04/14 20:23:28 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes_bonus/checker.h"
+#include <checker.h>
+
+char	*ft_join(char *s1, char *s2)
+{
+	char	*str;
+	size_t	i;
+	size_t	j;
+
+	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!str)
+		return (0);
+	i = 0;
+	while (s1 && s1[i])
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2 && s2[j])
+		str[i++] = s2[j++];
+	str[i] = '\0';
+	free(s1);
+	return (str);
+}
 
 char	*ft_find(char *s)
 {
@@ -69,9 +92,7 @@ char	*read_str(int fd, char *s)
 	char	*buf;
 	int		n;
 
-	buf = (char *)malloc(BUFFER_SIZE + 1);
-	if (!buf)
-		return (0);
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	while (1)
 	{
 		n = read(fd, buf, BUFFER_SIZE);
@@ -83,7 +104,7 @@ char	*read_str(int fd, char *s)
 		buf[n] = '\0';
 		if (n == 0)
 			break ;
-		s = ft_strjoin(s, buf);
+		s = ft_join(s, buf);
 		if (ft_strchr(s, '\n'))
 			break ;
 	}

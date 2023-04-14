@@ -1,15 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_parse.c                                    :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 18:23:25 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/13 21:53:03 by mnazarya         ###   ########.fr       */
+/*   Created: 2023/02/13 11:32:45 by mnazarya          #+#    #+#             */
+/*   Updated: 2023/04/14 20:12:45 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <checker.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
+# include <stdlib.h>
+# include <unistd.h>
+
+char	*get_next_line(int fd);
+char	*read_str(int fd, char *s);
+char	*ft_join(char *s1, char *s2);
+char	*ft_find(char *s);
+char	*ft_remainder(char *s);
+
+#endif

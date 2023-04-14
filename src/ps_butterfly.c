@@ -6,7 +6,7 @@
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 18:03:21 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/12 19:47:45 by mnazarya         ###   ########.fr       */
+/*   Updated: 2023/04/14 19:17:03 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static int	optimaizer(int size)
 	log = 0;
 	while (sqrt < size / sqrt)
 		sqrt++;
-	while (log)
+	while (size)
 	{
 		size /= 2;
 		log++;
 	}
-	return (sqrt + log);
+	return (sqrt + log - 1);
 }
 
 static void	butterfly_short_way(t_stack **stack, t_stack *node)
@@ -76,6 +76,23 @@ static void	find_max(t_stack **stack)
 	butterfly_short_way(stack, tmp);
 }
 
+void	pushing(t_stack **a, t_stack **b, int *i, int op)
+{
+	if ((*a)->index <= *i)
+	{
+		pb(a, b);
+		rb(b);
+		(*i)++;
+	}
+	else if ((*a)->index > *i && (*a)->index <= *i + op)
+	{
+		pb(a, b);
+		(*i)++;
+	}
+	else
+		ra(a);
+}
+
 void	butterfly_sort(t_stack **a, t_stack **b)
 {
 	int	n;
@@ -86,21 +103,7 @@ void	butterfly_sort(t_stack **a, t_stack **b)
 	n = ft_stacksize(*a);
 	op = optimaizer(n);
 	while (i < n)
-	{
-		if ((*a)->index <= i)
-		{
-			pb(a, b);
-			rb(b);
-			i++;
-		}
-		else if ((*a)->index > i && (*a)->index <= i + op)
-		{
-			pb(a, b);
-			i++;
-		}
-		else
-			ra(a);
-	}
+		pushing(a, b, &i, op);
 	while (*b)
 	{
 		find_max(b);

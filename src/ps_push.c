@@ -17,27 +17,17 @@ static int	push(t_stack **dst, t_stack **src)
 	t_stack	*h;
 	t_stack	*tmp;
 
-	if (!(*src) || !src)
+	if (!src || !(*src))
 		return (0);
-	if (*dst)
-	{
-		tmp = (*src)->next;
-		h = *src;
-		h->next = *dst;
-		(*dst)->prev = h;
-		if (tmp)
-			tmp->prev = NULL;
-		*dst = h;
-		*src = tmp;
-	}
-	else
-	{
-		tmp = (*src)->next;
-		*dst = *src;
+	tmp = (*src)->next;
+	h = *src;
+	if (tmp)
 		tmp->prev = NULL;
-		*src = tmp;
-		(*dst)->next = NULL;
-	}
+	if (*dst)
+		(*dst)->prev = h;
+	h->next = *dst;
+	*dst = h;
+	*src = tmp;
 	return (1);
 }
 

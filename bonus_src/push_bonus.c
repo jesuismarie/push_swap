@@ -1,54 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   push_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 20:56:54 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/13 20:56:54 by mnazarya         ###   ########.fr       */
+/*   Created: 2023/04/14 18:48:47 by mnazarya          #+#    #+#             */
+/*   Updated: 2023/04/14 18:48:47 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <checker.h>
 
-static int	push(t_stack **dst, t_stack **src)
+static void	push(t_stack **dst, t_stack **src)
 {
 	t_stack	*h;
 	t_stack	*tmp;
 
-	if (!(*src) || !src)
-		return (0);
-	if (*dst)
-	{
-		tmp = (*src)->next;
-		h = *src;
-		h->next = *dst;
-		(*dst)->prev = h;
-		if (tmp)
-			tmp->prev = NULL;
-		*dst = h;
-		*src = tmp;
-	}
-	else
-	{
-		tmp = (*src)->next;
-		*dst = *src;
+	if (!src || !(*src))
+		return ;
+	tmp = (*src)->next;
+	h = *src;
+	if (tmp)
 		tmp->prev = NULL;
-		*src = tmp;
-		(*dst)->next = NULL;
-	}
-	return (1);
+	if (*dst)
+		(*dst)->prev = h;
+	h->next = *dst;
+	*dst = h;
+	*src = tmp;
 }
 
 void	pa(t_stack **a, t_stack **b)
 {
-	if (push(a, b))
-		ft_putstr_fd("pa\n", 1);
+	push(a, b);
 }
 
 void	pb(t_stack **a, t_stack **b)
 {
-	if (push(b, a))
-		ft_putstr_fd("pb\n", 1);
+	push(b, a);
 }

@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   reverse_rotate_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 20:57:58 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/13 20:57:58 by mnazarya         ###   ########.fr       */
+/*   Created: 2023/04/14 18:49:02 by mnazarya          #+#    #+#             */
+/*   Updated: 2023/04/14 18:49:02 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <checker.h>
 
-static int	rev_rotate(t_stack **elem)
+static void	rev_rotate(t_stack **elem)
 {
 	t_stack	*tmp;
 
 	if (!elem || !*elem || !(*elem)->next)
-		return (0);
+		return ;
 	tmp = *elem;
 	while ((*elem)->next)
 		*elem = (*elem)->next;
@@ -25,23 +25,20 @@ static int	rev_rotate(t_stack **elem)
 	tmp->prev = *elem;
 	(*elem)->next = tmp;
 	(*elem)->prev = NULL;
-	return (1);
 }
 
 void	rra(t_stack **a)
 {
-	if (rev_rotate(a))
-		ft_putstr_fd("rra\n", 1);
+	rev_rotate(a);
 }
 
 void	rrb(t_stack **b)
 {
-	if (rev_rotate(b))
-		ft_putstr_fd("rrb\n", 1);
+	rev_rotate(b);
 }
 
 void	rrr(t_stack **a, t_stack **b)
 {
-	if (rev_rotate(a) && rev_rotate(b))
-		ft_putstr_fd("rrr\n", 1);
+	rev_rotate(a);
+	rev_rotate(b);
 }

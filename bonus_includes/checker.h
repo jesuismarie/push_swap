@@ -6,7 +6,7 @@
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 18:24:16 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/13 21:54:02 by mnazarya         ###   ########.fr       */
+/*   Updated: 2023/04/14 18:58:12 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ long	ft_atol(const char *nptr);
 int		int_range(char	*s);
 t_stack	*get_args(t_stack *a, int ac, char **av);
 int		is_sorted(t_stack *a);
-void	check(t_stack **a, int ac, char **av);
 t_stack	*stack_new(int data);
 t_stack	*ft_last(t_stack *elem);
 void	ft_stackadd_back(t_stack **elem, t_stack *new);
@@ -53,5 +52,6 @@ void	rr(t_stack **a, t_stack **b);
 void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
+void	check_instruction(char *curr_instr, t_stack **a, t_stack **b);
 
 #endif

@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnazarya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 17:58:16 by mnazarya          #+#    #+#             */
-/*   Updated: 2023/04/14 20:06:46 by mnazarya         ###   ########.fr       */
+/*   Created: 2023/04/14 15:34:02 by mnazarya          #+#    #+#             */
+/*   Updated: 2023/04/14 20:26:11 by mnazarya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include <checker.h>
 
-void	check(t_stack **a, int ac, char **av)
+static void	check(t_stack **a, int ac, char **av)
 {
 	if (is_no_arg(ac, av))
 		exit(0);
 	is_correct(ac, av);
 	sign_between_nbr(ac, av);
 	*a = get_args(*a, ac, av);
-	if (is_sorted(*a))
-		exit(0);
 	if (is_duplicate(*a))
 		error_mss();
 }
@@ -29,21 +27,25 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
-	int		size;
+	char	*curr_instr;
 
 	a = NULL;
 	b = NULL;
 	if (ac < 2)
 		return (0);
 	check(&a, ac, av);
-	indexing(&a);
-	size = ft_stacksize(a);
-	if (size == 2)
-		sa(&a);
-	else if (size > 2 && size < 13)
-		sort_under_12(&a, &b, size);
+	while (1)
+	{
+		curr_instr = get_next_line(0);
+		if (curr_instr)
+			check_instruction(curr_instr, &a, &b);
+		else
+			break ;
+		free(curr_instr);
+	}
+	if (!a || b || !is_sorted(a))
+		ft_putstr_fd("KO\n", 1);
 	else
-		butterfly_sort(&a, &b);
-	stackclear(a);
+		ft_putstr_fd ("OK\n", 1);
 	return (0);
 }
