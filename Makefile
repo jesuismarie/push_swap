@@ -16,7 +16,7 @@ OBJS 			= $(patsubst $(SRC)/%.c, $(BUILD)/%.o, $(SRCS))
 
 OBJS_BONUS		= $(patsubst $(SRC_B)/%.c, $(BUILD)/%.o, $(SRCS_BONUS))
 
-INCS 			= -I./includes -I./Libft
+INCS			= -I./includes -I./Libft
 
 INCS_B			= -I./bonus_includes -I./Libft
 
@@ -24,13 +24,13 @@ HEADER			= ./includes/push_swap.h
 
 HEADER_BONUS	= ./bonus_includes/checker.h
 
-FLAGS			= -Wall -Wextra -Werror# -fsanitize=address -g
+FLAGS			= -Wall -Wextra -Werror -fsanitize=address -g
 
 LIBFT			= -LLibft -lft
 
 CC				= cc
 
-all: 			$(BUILD) lib $(NAME)
+all:			$(BUILD) lib $(NAME)
 
 $(BUILD)/%.o:	$(SRC)/%.c $(HEADER) Makefile
 		$(CC) $(FLAGS) $(INCS) -c $< -o $@

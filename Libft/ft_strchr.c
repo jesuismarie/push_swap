@@ -11,13 +11,12 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h> 
+
 char	*ft_strchr(const char *s, int c)
 {
 	char	b;
 
 	b = (char)c;
-	// printf ("%s\n", s);
 	if (!s)
 		return (0);
 	while (*s && *s != b)
