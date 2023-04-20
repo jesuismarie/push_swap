@@ -58,7 +58,7 @@ fclean:		clean
 		rm -f ${NAME} ${BONUS}
 		@make fclean -C Libft
 
-re:			fclean all bonus
+re:			fclean all
 
 bonus:		$(BUILD) lib $(BONUS)
 
