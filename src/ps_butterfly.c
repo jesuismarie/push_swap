@@ -56,9 +56,7 @@ static void	find_max(t_stack **stack)
 {
 	t_stack	*tmp;
 	int		max;
-	int		i;
-
-	i = 0;
+	
 	tmp = *stack;
 	max = tmp->data;
 	while (*stack)
@@ -69,10 +67,7 @@ static void	find_max(t_stack **stack)
 	}
 	*stack = tmp;
 	while (tmp->data != max)
-	{
 		tmp = tmp->next;
-		i++;
-	}
 	butterfly_short_way(stack, tmp);
 }
 
