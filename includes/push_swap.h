@@ -22,7 +22,6 @@ typedef struct s_stack
 	int				data;
 	int				index;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 }		t_stack;
 
 void	error_mss(void);
