@@ -21,7 +21,6 @@ t_stack	*stack_new(int data)
 		return (0);
 	s->data = data;
 	s->next = NULL;
-	s->prev = NULL;
 	return (s);
 }
 
@@ -46,7 +45,6 @@ void	ft_stackadd_back(t_stack **elem, t_stack *new)
 	{
 		n = ft_last(*elem);
 		n->next = new;
-		new->prev = n;
 	}
 }
 

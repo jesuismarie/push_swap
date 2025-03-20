@@ -21,10 +21,6 @@ static int	push(t_stack **dst, t_stack **src)
 		return (0);
 	tmp = (*src)->next;
 	h = *src;
-	if (tmp)
-		tmp->prev = NULL;
-	if (*dst)
-		(*dst)->prev = h;
 	h->next = *dst;
 	*dst = h;
 	*src = tmp;

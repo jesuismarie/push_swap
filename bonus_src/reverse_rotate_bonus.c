@@ -15,16 +15,18 @@
 static void	rev_rotate(t_stack **elem)
 {
 	t_stack	*tmp;
+	t_stack	*prev;
 
 	if (!elem || !*elem || !(*elem)->next)
 		return ;
 	tmp = *elem;
 	while ((*elem)->next)
+	{
+		prev = *elem;
 		*elem = (*elem)->next;
-	(*elem)->prev->next = NULL;
-	tmp->prev = *elem;
+	}
+	prev->next = NULL;
 	(*elem)->next = tmp;
-	(*elem)->prev = NULL;
 }
 
 void	rra(t_stack **a)

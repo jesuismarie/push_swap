@@ -47,5 +47,6 @@ int	main(int ac, char **av)
 		ft_putstr_fd("KO\n", 1);
 	else
 		ft_putstr_fd ("OK\n", 1);
+	stackclear(a);
 	return (0);
 }

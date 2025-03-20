@@ -24,9 +24,7 @@ static int	rotate(t_stack **elem)
 	while ((*elem)->next)
 		*elem = (*elem)->next;
 	(*elem)->next = tmp;
-	tmp->prev = *elem;
 	tmp->next = NULL;
-	h->prev = NULL;
 	*elem = h;
 	return (1);
 }
